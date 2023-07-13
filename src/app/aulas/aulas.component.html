@@ -1,0 +1,11 @@
+<div class="content">
+  <div class="header">
+    <h1 class="title">Aulas</h1>
+    <p class="legenda-title">
+      Conheça as aulas de instrumentos musicais que oferecemos.
+    </p>
+  </div>
+  <div class="body">
+    <app-card-aulas *ngFor="let name of names" [name]="name"></app-card-aulas>
+  </div>
+</div>
