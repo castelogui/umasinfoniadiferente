@@ -11,6 +11,8 @@ import { AulasComponent } from './aulas/aulas.component';
 import { CardAulasComponent } from './card-aulas/card-aulas.component';
 import { DetailsComponent } from './details/details.component';
 import { TutoresComponent } from './tutores/tutores.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { MapsComponent } from './maps/maps.component';
 
 @NgModule({
   declarations: [
@@ -23,10 +25,12 @@ import { TutoresComponent } from './tutores/tutores.component';
     CardAulasComponent,
     DetailsComponent,
     TutoresComponent,
+    MapsComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
