@@ -2,10 +2,11 @@
   <div class="header">
     <h1 class="title">Aulas</h1>
     <p class="legenda-title">
-      Conheça as aulas de instrumentos musicais que oferecemos.
+      Conheça as aulas de instrumentos musicais que oferecemos e embarque em uma jornada de aprendizado e paixão pela música. 
+      Descubra novos talentos, aprimore suas habilidades e mergulhe na maravilhosa experiência de tocar um instrumento.
     </p>
   </div>
-  <div class="body">
-    <app-card-aulas *ngFor="let name of names" [name]="name"></app-card-aulas>
+  <div class="body" >
+    <app-card-aulas *ngFor="let aula of aulas" [aula]="aula"></app-card-aulas>
   </div>
 </div>
