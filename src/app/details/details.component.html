@@ -1,0 +1,12 @@
+<div class="content">
+  <h4 class="title">Aulas diversificadas para todas as idades!</h4>
+  <div class="beneficios" >
+    <div class="beneficio" *ngFor="let beneficio of beneficios">
+      <i class="fa-solid fa-check"></i>
+      <h5 class="title-beneficio">{{beneficio.title}}</h5>
+      <p class="legenda">
+        {{beneficio.legenda}}
+      </p>
+    </div>
+  </div>
+</div>
