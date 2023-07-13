@@ -1,0 +1,19 @@
+<div class="content">
+  <h4 class="title">Nossos tutores</h4>
+  <div class="cards">
+    <div class="tutores" *ngFor="let tutor of tutores">
+      <div class="header">
+        <div class="avatar">
+          <img src="{{tutor.avatar}}" alt="{{tutor.nome}}">
+          <h5 class="nome">{{tutor.nome}}</h5>
+          <p class="funcao">{{tutor.funcao}}</p>
+        </div>
+      </div>
+      <div class="body">
+        <p class="descricao">
+          {{tutor.descricao}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
