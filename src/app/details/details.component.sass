@@ -56,18 +56,20 @@
   padding: 0 1rem
 
 // implemntação de layout responsivo
-@media (max-width: 768px)
+@media (max-width: 1315px)
   .content
     width: 100%
     height: 100%
-    padding: 2rem 0
+    padding: 3rem 0
   .title
     font-size: 2rem
     margin-bottom: 3rem
   .beneficios
-    flex-direction: column
-    align-items: center
+    flex-wrap: wrap
     justify-content: center
+    align-items: center
+    gap: 2rem
+    transition: all 0.5s ease-in-out
   .beneficio
     margin-bottom: 3rem
     padding: 0

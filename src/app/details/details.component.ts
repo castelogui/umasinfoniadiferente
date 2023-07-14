@@ -13,11 +13,15 @@ export class DetailsComponent {
     },
     {
       title: 'Espaço Aberto',
-      legenda: 'Espaço para discussão de assuntos diversos',
+      legenda: 'Espaço para diversas aulas e atividades musicais',
     },
     {
-      title: 'Aulas Especificas',
-      legenda: 'Aulas específicas para alunos com dificuldades em determinadas matérias',
+      title: 'Aulas Particulares',
+      legenda: 'Aulas particulares para amantes da música',
+    },
+    {
+      title: 'Preço Acessível',
+      legenda: 'Preço acessível para todos os públicos',
     }
   ]
 }
