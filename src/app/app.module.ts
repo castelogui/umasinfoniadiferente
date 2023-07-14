@@ -13,6 +13,7 @@ import { DetailsComponent } from './details/details.component';
 import { TutoresComponent } from './tutores/tutores.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MapsComponent } from './maps/maps.component';
+import { InstagramComponent } from './instagram/instagram.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MapsComponent } from './maps/maps.component';
     DetailsComponent,
     TutoresComponent,
     MapsComponent,
+    InstagramComponent,
   ],
   imports: [
     BrowserModule,
