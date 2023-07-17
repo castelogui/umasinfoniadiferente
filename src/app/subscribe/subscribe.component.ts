@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, FormControlName } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { instrumento } from '../aulas/aulas.component';
 
 @Component({
@@ -81,10 +81,10 @@ export class SubscribeComponent {
 
   createForm(aluno: Aluno) {
     this.formAluno = new FormGroup({
-      nome: new FormControl(aluno.nome),
-      telefone: new FormControl(aluno.telefone),
+      nome: new FormControl(aluno.nome, Validators.required),
+      telefone: new FormControl(aluno.telefone, Validators.minLength(15)),
       genero: new FormControl(aluno.genero),
-      dataNascimento: new FormControl(aluno.dataNascimento),
+      dataNascimento: new FormControl(aluno.dataNascimento, Validators.required),
       instrumento: new FormControl(aluno.instrumento),
       esquemaAulas: new FormGroup({
         turno: new FormControl(aluno.esquemaAulas.turno),
@@ -97,6 +97,25 @@ export class SubscribeComponent {
     this.buildMessage();
     //this.formAluno.reset(new Aluno());
   }
+  validatorTelefone(telefone: string) {
+    if (telefone.length == 1) {
+      this.formAluno.get('telefone')?.setValue('(' + telefone);
+    } else if (telefone.length == 3) {
+      this.formAluno.get('telefone')?.setValue(telefone + ') ');
+    } else if (telefone.length == 10) {
+      this.formAluno.get('telefone')?.setValue(telefone + '-');
+    }
+  }
+
+  addMaskTelefone(telefone: string) {
+    const telefonePattern = telefone.replace(/\D/g, '');
+    const match = telefonePattern.match(/^(\d{2})(\d{5})(\d{4})$/);
+    if (match) {
+      const telefoneMascarado = `(${match[1]}) ${match[2]}-${match[3]}`;
+      return telefoneMascarado;
+    }
+    return
+  }
 
   onInsert() {
     this.instrumentoImgSelecionado = this.instrumentos.find(x => x.id == this.formAluno.get('instrumento')?.value)?.avatar || '';
@@ -106,6 +125,11 @@ export class SubscribeComponent {
     this.alterClass(this.formAluno.get('dataNascimento')?.value, 'label-dataNasc');
     this.alterClass(this.formAluno.get('esquemaAulas')?.get('turno')?.value, 'label-turno');
     this.alterClass(this.formAluno.get('esquemaAulas')?.get('dias')?.value, 'label-dias');
+    this.validateValues();
+  }
+  validateValues() {
+    this.validatorTelefone(this.formAluno.get('telefone')?.value)
+    this.validateDate(this.formAluno.get('dataNascimento')?.value);
   }
   alterClass(atributo: FormData, id: string) {
     if (atributo) {
@@ -125,7 +149,7 @@ export class SubscribeComponent {
   // constroi mensagem para ser enviada no whatsapp
   buildMessage() {
     const data = this.formAluno.value;
-    let message = `Olá, meu nome é *${data.nome}*, *${this.calculateAge(data.dataNascimento)}* anos e tenho interesse em fazer aulas de *${this.instrumentos.find(x => x.id == data.instrumento)?.name}*.%0a`;
+    let message = `Olá, meu nome é *${data.nome}*, idade: *${this.calculateAge(data.dataNascimento)}*,tenho interesse em fazer aulas de *${this.instrumentos.find(x => x.id == data.instrumento)?.name}*.%0a`;
     message += `Prefiro aulas no período da *${this.turnos.find(x => x.id == data.esquemaAulas.turno)?.name}*.%0a`;
     message += `Tenho disponibilidade *${this.dias.find(x => x.id == data.esquemaAulas.dias)?.name}*.%0a`;
     message += `Contato: *${data.telefone}*.%0a`;
@@ -136,15 +160,34 @@ export class SubscribeComponent {
   }
   formatDate(date: Date) {
     let data = new Date(date);
-    let dia = data.getDate() + 1;
-    let mes = data.getMonth() + 1;
-    let ano = data.getFullYear();
-    return `${dia < 10 ? '0' + dia : dia}/${mes < 10 ? '0' + mes : mes}/${ano}`;    
+    if (this.validateDate(date)) {
+      let dia = data.getDate() + 1;
+      let mes = data.getMonth() + 1;
+      let ano = data.getFullYear();
+      return `${dia < 10 ? '0' + dia : dia}/${mes < 10 ? '0' + mes : mes}/${ano}`;
+    } else {
+      return "Inválida"
+    }
+  }
+  validateDate(date: Date) {
+    let data = new Date(date);
+    //a data não pode ser maior que a data atual ou menor que 5 anos
+    if (data > new Date() || this.calculateAge(data) == "Inválida") {
+      //limpar campo da data de nascimento
+      this.formAluno.get('dataNascimento')?.setValue('');
+      return false;
+    } else {
+      return true;
+    }
   }
   calculateAge(date: Date) {
     let ageDifMs = Date.now() - new Date(date).getTime();
     let ageDate = new Date(ageDifMs);
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
+    // se a idade for maior que 5 anos, retorna a idade
+    if (ageDate.getUTCFullYear() - 1970 > 4) {
+      return ageDate.getUTCFullYear() - 1970;
+    }
+    return "Inválida"
   }
 }
 export class Aluno {

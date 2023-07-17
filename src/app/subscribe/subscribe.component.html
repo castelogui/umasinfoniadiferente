@@ -8,19 +8,21 @@
       </select>
       <label class="label" id="label-instrumento" for="instrumento">Instrumento de Interesse</label>
     </div>
-    
+
     <div class="form-group">
-      <input type="text" class="form-control" name="name" id="nome" formControlName="nome">
+      <input type="text" class="form-control" name="name" id="nome" formControlName="nome" placeholder="Nome Completo"
+      (invalid)="formAluno.get('nome')?.status == 'INVALID'" required>
       <label class="label" id="label-nome" for="nome">Nome</label>
     </div>
 
     <div class="input-group">
       <div class="form-group">
-        <input type="tel" class="form-control" name="telefone" id="telefone" formControlName="telefone">
+        <input type="tel" class="form-control" name="telefone" id="telefone" formControlName="telefone"
+          placeholder="(00) 0 0000-0000" maxlength="15" (invalid)="formAluno.get('telefone')?.status == 'INVALID'">
         <label class="label" id="label-telefone" for="telefone">Telefone</label>
       </div>
       <div class="form-group">
-        <input type="date" class="form-control input-date" name="dataNascimento" id="dataNascimento"
+        <input type="date" class="form-control input-date " name="dataNascimento" id="dataNascimento"
           formControlName="dataNascimento" required>
         <label class="label" id="label-dataNasc" for="dataNascimento">Data de nascimento</label>
       </div>
