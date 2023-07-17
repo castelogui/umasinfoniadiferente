@@ -1,9 +1,9 @@
 <div class="content">
   <h2 class="title">Inscreva-se</h2>
+  <img class="img" src="{{instrumentoImgSelecionado}}" alt="">
   <form [formGroup]="formAluno" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <select class="form-control" name="instrumento" id="instrumento" formControlName="instrumento">
-        <!--<option value="" class="placeholder" disabled selected>Selecione uma opção</option>-->
         <option *ngFor="let instrumento of instrumentos" value="{{instrumento.id}}">{{instrumento.name}}</option>
       </select>
       <label class="label" id="label-instrumento" for="instrumento">Instrumento de Interesse</label>
