@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { instrumento } from '../aulas/aulas.component';
 
 @Component({
   selector: 'app-card-aulas',
@@ -6,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./card-aulas.component.sass']
 })
 export class CardAulasComponent {
-  @Input() aula: any;
+  @Input() instrumento: instrumento = new instrumento();
 }
