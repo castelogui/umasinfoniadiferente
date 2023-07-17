@@ -8,4 +8,7 @@ import { instrumento } from '../aulas/aulas.component';
 })
 export class CardAulasComponent {
   @Input() instrumento: instrumento = new instrumento();
+  inscricao(id: number) {
+    localStorage.setItem('instrumento', JSON.stringify(this.instrumento));
+  }
 }
