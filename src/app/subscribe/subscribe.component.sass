@@ -13,7 +13,7 @@
   width: 130px
   border: 1px solid #ccc
   border-radius: 40px
-  margin: 0 0 3rem  0
+  margin: 0 0 3rem 0
   transition: 0.3s
 form
   display: flex
@@ -72,11 +72,14 @@ form
   justify-content: space-between
 .input-group>.form-group
   width: 48%
-
+.form-control::placeholder
+  color: transparent
+.form-control:focus::placeholder
+  color: #ccc
 input[type=date]:required:invalid::-webkit-datetime-edit
   color: transparent
 input[type=date]:focus::-webkit-datetime-edit
-  color: black !important
+  color: #ccc !important
 .buttons
   display: flex
   flex-direction: row
