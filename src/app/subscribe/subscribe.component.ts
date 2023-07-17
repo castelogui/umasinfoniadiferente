@@ -156,7 +156,7 @@ export class SubscribeComponent {
     message += `Data de Nascimento: *${this.formatDate(data.dataNascimento)}*.%0a`;
     message += `Obrigado!`;
 
-    window.open(`https://api.whatsapp.com/send?phone=5569999071519&text=${message}`, '_blank');
+    window.open(`https://api.whatsapp.com/send?phone=5569981062874&text=${message}`, '_blank');
   }
   formatDate(date: Date) {
     let data = new Date(date);
