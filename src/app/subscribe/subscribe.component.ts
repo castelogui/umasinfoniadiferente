@@ -70,12 +70,13 @@ export class SubscribeComponent {
     },
   ]
   formAluno!: FormGroup;
-
+  instrumentoImgSelecionado: string = '';
   constructor() { }
 
   ngOnInit() {
     this.createForm(new Aluno());
     this.formAluno.valueChanges.subscribe(data => this.onInsert());
+    this.getInstrumento();
   }
 
   createForm(aluno: Aluno) {
@@ -93,26 +94,33 @@ export class SubscribeComponent {
   }
 
   onSubmit() {
-    // aqui você pode implementar a logica para fazer seu formulário salvar
     console.log(this.formAluno.value);
 
-    // Usar o método reset para limpar os controles na tela
     //this.formAluno.reset(new Aluno());
   }
 
   onInsert() {
-    this.alterClass(this.formAluno.value.nome, 'label-nome');
-    this.alterClass(this.formAluno.value.telefone, 'label-telefone');
-    this.alterClass(this.formAluno.value.instrumento, 'label-instrumento');
-    this.alterClass(this.formAluno.value.dataNascimento, 'label-dataNasc');
-    this.alterClass(this.formAluno.value.esquemaAulas.turno, 'label-turno');
-    this.alterClass(this.formAluno.value.esquemaAulas.dias, 'label-dias');
+    this.instrumentoImgSelecionado = this.instrumentos.find(x => x.id == this.formAluno.get('instrumento')?.value)?.avatar || '';
+    this.alterClass(this.formAluno.get('nome')?.value, 'label-nome');
+    this.alterClass(this.formAluno.get('telefone')?.value, 'label-telefone');
+    this.alterClass(this.formAluno.get('instrumento')?.value, 'label-instrumento');
+    this.alterClass(this.formAluno.get('dataNascimento')?.value, 'label-dataNasc');
+    this.alterClass(this.formAluno.get('esquemaAulas')?.get('turno')?.value, 'label-turno');
+    this.alterClass(this.formAluno.get('esquemaAulas')?.get('dias')?.value, 'label-dias');
   }
-  alterClass(atributo: any, id: string) {
-    if (atributo.length > 0) {
+  alterClass(atributo: FormData, id: string) {
+    if (atributo) {
       document.getElementById(id)?.classList.add('has-value');
     } else {
       document.getElementById(id)?.classList.remove('has-value');
+    }
+  }
+  getInstrumento() {
+    let instrumento = localStorage.getItem('instrumento');
+    if (instrumento) {
+      this.formAluno.get('instrumento')?.setValue(JSON.parse(instrumento).id);
+      this.instrumentoImgSelecionado = JSON.parse(instrumento).avatar;
+      localStorage.removeItem('instrumento');
     }
   }
 }
@@ -120,7 +128,7 @@ export class Aluno {
   nome: string = '';
   telefone: string = '';
   genero: number = 0;
-  dataNascimento: Date = new Date('01-01-2000');
+  dataNascimento: Date | null = null;
   instrumento: string = '';
   esquemaAulas: EsquemaAula = new EsquemaAula;
 }
