@@ -1,0 +1,72 @@
+<div class="content">
+  <h2 class="title">Inscreva-se</h2>
+  <form [formGroup]="formAluno" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <select class="form-control" name="instrumento" id="instrumento" formControlName="instrumento">
+        <!--<option value="" class="placeholder" disabled selected>Selecione uma opção</option>-->
+        <option *ngFor="let instrumento of instrumentos" value="{{instrumento.id}}">{{instrumento.name}}</option>
+      </select>
+      <label class="label" id="label-instrumento" for="instrumento">Instrumento de Interesse</label>
+    </div>
+    
+    <div class="form-group">
+      <input type="text" class="form-control" name="name" id="nome" formControlName="nome">
+      <label class="label" id="label-nome" for="nome">Nome</label>
+    </div>
+
+    <div class="input-group">
+      <div class="form-group">
+        <input type="tel" class="form-control" name="telefone" id="telefone" formControlName="telefone">
+        <label class="label" id="label-telefone" for="telefone">Telefone</label>
+      </div>
+      <div class="form-group">
+        <input type="date" class="form-control input-date" name="dataNascimento" id="dataNascimento"
+          formControlName="dataNascimento" required>
+        <label class="label" id="label-dataNasc" for="dataNascimento">Data de nascimento</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="label-check" for="genero">Gênero</label>
+      <div class="input-group input-group-radios">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="genero" id="masculino" [value]="1"
+            formControlName="genero">
+          <label class="form-check-label" for="masculino">Masculino</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="genero" id="feminino" [value]="2" formControlName="genero">
+          <label class="form-check-label" for="feminino">Feminino</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="genero" id="outro" [value]="3" formControlName="genero">
+          <label class="form-check-label" for="outro">Outro</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group" formGroupName="esquemaAulas">
+      <label class="label-esquema" for="esquemaAulas">Esquema das Aulas</label>
+      <div class="input-group">
+        <div class="form-group">
+          <select class="form-control" name="turno" id="turno" formControlName="turno">
+            <option *ngFor="let turno of turnos" value="{{turno.id}}">{{turno.name}}</option>
+          </select>
+          <label class="label" id="label-turno" for="turno">Turno</label>
+        </div>
+        <div class="form-group">
+          <select class="form-control" name="dias" id="dias" formControlName="dias">
+            <option *ngFor="let dia of dias" value="{{dia.id}}">{{dia.name}}</option>
+          </select>
+          <label class="label" id="label-dias" for="dias">Dias</label>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="buttons">
+      <a href="#" class="btn btn-cancelar">Cancelar</a>
+      <input type="submit" class="btn btn-salvar" value="Inscrever">
+    </div>
+
+  </form>
+</div>
