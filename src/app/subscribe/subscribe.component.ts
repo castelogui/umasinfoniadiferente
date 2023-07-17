@@ -125,11 +125,11 @@ export class SubscribeComponent {
   // constroi mensagem para ser enviada no whatsapp
   buildMessage() {
     const data = this.formAluno.value;
-    let message = `Olá, meu nome é *${data.nome}*, *${this.calculateAge(data.dataNascimento)}* anos e tenho interesse em fazer aulas de *${this.instrumentos.find(x => x.id == data.instrumento)?.name}*.\n`;
-    message += `Prefiro aulas no período da *${this.turnos.find(x => x.id == data.esquemaAulas.turno)?.name}*.\n`;
-    message += `Tenho disponibilidade *${this.dias.find(x => x.id == data.esquemaAulas.dias)?.name}*.\n`;
-    message += `Contato: *${data.telefone}*.\n`;
-    message += `Data de Nascimento: *${this.formatDate(data.dataNascimento)}*.\n`;
+    let message = `Olá, meu nome é *${data.nome}*, *${this.calculateAge(data.dataNascimento)}* anos e tenho interesse em fazer aulas de *${this.instrumentos.find(x => x.id == data.instrumento)?.name}*.%0a`;
+    message += `Prefiro aulas no período da *${this.turnos.find(x => x.id == data.esquemaAulas.turno)?.name}*.%0a`;
+    message += `Tenho disponibilidade *${this.dias.find(x => x.id == data.esquemaAulas.dias)?.name}*.%0a`;
+    message += `Contato: *${data.telefone}*.%0a`;
+    message += `Data de Nascimento: *${this.formatDate(data.dataNascimento)}*.%0a`;
     message += `Obrigado!`;
 
     window.open(`https://api.whatsapp.com/send?phone=5569999071519&text=${message}`, '_blank');
