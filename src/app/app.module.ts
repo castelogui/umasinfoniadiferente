@@ -16,6 +16,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { MapsComponent } from './maps/maps.component';
 import { InstagramComponent } from './instagram/instagram.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
+import { MenuNavComponent } from './menu-nav/menu-nav.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { SubscribeComponent } from './subscribe/subscribe.component';
     MapsComponent,
     InstagramComponent,
     SubscribeComponent,
+    MenuNavComponent,
   ],
   imports: [
     BrowserModule,

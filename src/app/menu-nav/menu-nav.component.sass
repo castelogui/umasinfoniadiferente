@@ -1,0 +1,25 @@
+a
+  display: flex
+  flex-direction: row
+  align-items: center
+  text-decoration: none
+  color: #fff
+.navbar-menu
+  display: flex
+  width: 100%
+  height: 100%
+  justify-content: flex-end
+  flex-direction: row
+  align-items: center
+  margin-left: auto
+  .navbar-item
+    margin: 0 1rem
+    font-size: 1.2rem
+    font-weight: 600
+    cursor: pointer
+    &:hover
+      color: #ccc
+@media (max-width: 768px)
+  .navbar-menu
+    flex-direction: column
+    justify-content: space-between
