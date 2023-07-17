@@ -42,6 +42,11 @@ export class AulasComponent {
       id: 7,
       name: 'Ukulele',
       avatar: '../../assets/instrumentos/ukulele.png',
+    },
+    {
+      id: 8,
+      name: 'Contra-baixo',
+      avatar: '../../assets/instrumentos/contra-baixo.png',
     }
   ]
 }
