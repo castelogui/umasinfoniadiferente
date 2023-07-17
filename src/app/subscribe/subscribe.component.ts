@@ -94,8 +94,7 @@ export class SubscribeComponent {
   }
 
   onSubmit() {
-    console.log(this.formAluno.value);
-
+    this.buildMessage();
     //this.formAluno.reset(new Aluno());
   }
 
@@ -122,6 +121,30 @@ export class SubscribeComponent {
       this.instrumentoImgSelecionado = JSON.parse(instrumento).avatar;
       localStorage.removeItem('instrumento');
     }
+  }
+  // constroi mensagem para ser enviada no whatsapp
+  buildMessage() {
+    const data = this.formAluno.value;
+    let message = `Olá, meu nome é *${data.nome}*, *${this.calculateAge(data.dataNascimento)}* anos e tenho interesse em fazer aulas de *${this.instrumentos.find(x => x.id == data.instrumento)?.name}*.\n`;
+    message += `Prefiro aulas no período da *${this.turnos.find(x => x.id == data.esquemaAulas.turno)?.name}*.\n`;
+    message += `Tenho disponibilidade *${this.dias.find(x => x.id == data.esquemaAulas.dias)?.name}*.\n`;
+    message += `Contato: *${data.telefone}*.\n`;
+    message += `Data de Nascimento: *${this.formatDate(data.dataNascimento)}*.\n`;
+    message += `Obrigado!`;
+
+    window.open(`https://api.whatsapp.com/send?phone=5569999071519&text=${message}`, '_blank');
+  }
+  formatDate(date: Date) {
+    let data = new Date(date);
+    let dia = data.getDate() + 1;
+    let mes = data.getMonth() + 1;
+    let ano = data.getFullYear();
+    return `${dia < 10 ? '0' + dia : dia}/${mes < 10 ? '0' + mes : mes}/${ano}`;    
+  }
+  calculateAge(date: Date) {
+    let ageDifMs = Date.now() - new Date(date).getTime();
+    let ageDate = new Date(ageDifMs);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 }
 export class Aluno {
