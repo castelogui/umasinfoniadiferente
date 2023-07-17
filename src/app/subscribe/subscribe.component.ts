@@ -119,7 +119,7 @@ export class SubscribeComponent {
 export class Aluno {
   nome: string = '';
   telefone: string = '';
-  genero: number = 1;
+  genero: number = 0;
   dataNascimento: Date = new Date('01-01-2000');
   instrumento: string = '';
   esquemaAulas: EsquemaAula = new EsquemaAula;
