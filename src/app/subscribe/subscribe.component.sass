@@ -9,12 +9,35 @@
   padding: 0
 .title
   font-size: 2.5rem
+@keyframes animation-img
+  from
+    background-color: #ddd
+  to
+    background-color: #bbb
+
+.icon
+  position: absolute
+  color: #ffffff
+  font-size: 4rem
 .img
-  width: 130px
-  border: 1px solid #ccc
-  border-radius: 40px
+  align-items: center
+  justify-content: center
+  display: flex
   margin: 0 0 3rem 0
   transition: 0.3s
+  width: 130px
+  height: 130px
+  border-radius: 40px
+  &:not(:-webkit-full-screen)
+    animation: animation-img 3s ease infinite
+img
+  background-size: cover
+  background-position: center
+  animation: animation-img 3s ease infinite
+  background-repeat: no-repeat
+  width: 130px
+  height: 130px
+  border-radius: 40px
 form
   display: flex
   flex-direction: column
