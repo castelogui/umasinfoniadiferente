@@ -10,16 +10,18 @@
 .title
   font-size: 2.5rem
 @keyframes animation-img
-  from
-    background-color: #ddd
   to
-    background-color: #bbb
+    opacity: .50
+@keyframes is-passing
+  from
+    transform: translateY(-10px)
 
 .icon
-  position: absolute
+  position: relative
   color: #ffffff
   font-size: 4rem
   transition: 0.3s ease
+  animation: animation-img 1s ease infinite 
 .img
   align-items: center
   justify-content: center
@@ -29,14 +31,14 @@
   width: 190px
   height: 190px
   border-radius: 10%
-  &:not(:-webkit-full-screen)
-    animation: animation-img 3s ease infinite
+  background-color: #ddd
+  
 img
   background-size: cover
   background-position: center
-  animation: animation-img 3s ease infinite
   background-repeat: no-repeat
   width: 190px
+  animation: none
   height: 190px
   border-radius: 10%
 form
