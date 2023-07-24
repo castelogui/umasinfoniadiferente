@@ -17,6 +17,7 @@ import { MapsComponent } from './maps/maps.component';
 import { InstagramComponent } from './instagram/instagram.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { MenuNavComponent } from './menu-nav/menu-nav.component';
+import { TimelineComponent } from './timeline/timeline.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MenuNavComponent } from './menu-nav/menu-nav.component';
     InstagramComponent,
     SubscribeComponent,
     MenuNavComponent,
+    TimelineComponent,
   ],
   imports: [
     BrowserModule,
