@@ -1,17 +1,1 @@
-
-<div class="timeline">
-  <div class="timeline-item" *ngFor="let evento of eventos">
-    <div class="timeline-content">
-      <div class="timeline-details">
-        <div class="info">
-          <h1 class="title">{{evento.name}}</h1>
-          <h3 class="date">{{evento.ano}}</h3>
-        </div>
-        <p class="description">{{evento.descricao}}</p>
-      </div>
-      <img src="{{evento.img}}" alt="">
-    </div>
-    <span class="line"></span>
-    <span class="circle" *ngIf="eventos[eventos.length-1] == evento"></span>
-  </div>
-</div>
+<app-timeline></app-timeline>
