@@ -19,12 +19,12 @@ export class TutoresComponent {
       funcao: 'Violão e Teclado',
       descricao: 'Professora de Violão e Teclado',
     },
-    {
+    /**{
       avatar: '../../assets/tutores/guilherme-violao-01.jpeg',
       nome: 'Guilherme',
       funcao: 'Violão e Contra Baixo',
       descricao: 'Professor de Violão e Contra Baixo',
-    },
+    },*/
     {
       avatar: '../../assets/tutores/franklin-guitarra-04.jpeg',
       nome: 'Franklin',
