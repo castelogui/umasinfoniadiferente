@@ -4,9 +4,9 @@
       <div class="timeline-details">
         <div class="info">
           <h1 class="title">{{evento.name}}</h1>
-          <h3 class="date">{{evento.ano}}</h3>
+          <h3 class="date">{{evento.date.toLocaleDateString()}}</h3>
         </div>
-        <p class="description">{{evento.descricao}}</p>
+        <p class="description" *ngFor="let desc of evento.descricao">{{desc}}</p>
       </div>
       <img src="{{evento.img}}" alt="">
     </div>

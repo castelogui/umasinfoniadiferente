@@ -18,6 +18,7 @@ import { InstagramComponent } from './instagram/instagram.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { MenuNavComponent } from './menu-nav/menu-nav.component';
 import { TimelineComponent } from './timeline/timeline.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { TimelineComponent } from './timeline/timeline.component';
     BrowserModule,
     AppRoutingModule,
     GoogleMapsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
