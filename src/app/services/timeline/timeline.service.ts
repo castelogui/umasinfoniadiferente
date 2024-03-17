@@ -8,7 +8,7 @@ import { Timeline } from 'src/app/classes/timeline';
 })
 export class TimelineService {
   constructor(private _httpClient: HttpClient) {}
-  private url = 'http://localhost:3000/history';
+  private url = 'https://umasinfoniadiferente.vercel.app/history';
 
   getTimeline(): Observable<Timeline[]> {
     return this._httpClient.get<Timeline[]>(this.url);
