@@ -1,16 +1,17 @@
 <div class="timeline">
-  <div class="timeline-item" *ngFor="let evento of eventos">
+  <div class="timeline-item" *ngFor="let evento of timeline">
     <div class="timeline-content">
       <div class="timeline-details">
         <div class="info">
           <h1 class="title">{{evento.name}}</h1>
           <h3 class="date">{{evento.date.toLocaleDateString()}}</h3>
         </div>
-        <p class="description" *ngFor="let desc of evento.descricao">{{desc}}</p>
+        <p class="description"
+          *ngFor="let desc of evento.descricao">{{desc}}</p>
       </div>
-      <img src="{{evento.img}}" alt="">
+      <img src="{{evento.img}}" alt>
     </div>
     <span class="line"></span>
-    <span class="circle" *ngIf="eventos[eventos.length-1] == evento"></span>
+    <span class="circle" *ngIf="timeline[timeline.length-1] == evento"></span>
   </div>
 </div>
