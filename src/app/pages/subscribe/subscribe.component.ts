@@ -5,7 +5,7 @@ import { instrumento } from '../aulas/aulas.component';
 @Component({
   selector: 'app-subscribe',
   templateUrl: './subscribe.component.html',
-  styleUrls: ['./subscribe.component.sass']
+  styleUrls: ['./subscribe.component.sass'],
 })
 export class SubscribeComponent {
   instrumentos: instrumento[] = [
@@ -48,8 +48,8 @@ export class SubscribeComponent {
       id: 8,
       name: 'Contra-baixo',
       avatar: '../../assets/instrumentos/contra-baixo.png',
-    }
-  ]
+    },
+  ];
   turnos: Turno[] = [
     {
       id: 1,
@@ -62,8 +62,8 @@ export class SubscribeComponent {
     {
       id: 3,
       name: 'Noite',
-    }
-  ]
+    },
+  ];
   dias: Dias[] = [
     {
       id: 1,
@@ -73,14 +73,14 @@ export class SubscribeComponent {
       id: 2,
       name: 'Terça e Quinta',
     },
-  ]
+  ];
   formAluno!: FormGroup;
   instrumentoImgSelecionado: string = '';
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.createForm(new Aluno());
-    this.formAluno.valueChanges.subscribe(data => this.onInsert());
+    this.formAluno.valueChanges.subscribe((data) => this.onInsert());
     this.getInstrumento();
   }
 
@@ -89,13 +89,16 @@ export class SubscribeComponent {
       nome: new FormControl(aluno.nome, Validators.required),
       telefone: new FormControl(aluno.telefone, Validators.minLength(15)),
       genero: new FormControl(aluno.genero),
-      dataNascimento: new FormControl(aluno.dataNascimento, Validators.required),
+      dataNascimento: new FormControl(
+        aluno.dataNascimento,
+        Validators.required
+      ),
       instrumento: new FormControl(aluno.instrumento),
       esquemaAulas: new FormGroup({
         turno: new FormControl(aluno.esquemaAulas.turno),
         dias: new FormControl(aluno.esquemaAulas.dias),
-      })
-    })
+      }),
+    });
   }
 
   onSubmit() {
@@ -119,21 +122,36 @@ export class SubscribeComponent {
       const telefoneMascarado = `(${match[1]}) ${match[2]}-${match[3]}`;
       return telefoneMascarado;
     }
-    return
+    return;
   }
 
   onInsert() {
-    this.instrumentoImgSelecionado = this.instrumentos.find(x => x.id == this.formAluno.get('instrumento')?.value)?.avatar || '';
+    this.instrumentoImgSelecionado =
+      this.instrumentos.find(
+        (x) => x.id == this.formAluno.get('instrumento')?.value
+      )?.avatar || '';
     this.alterClass(this.formAluno.get('nome')?.value, 'label-nome');
     this.alterClass(this.formAluno.get('telefone')?.value, 'label-telefone');
-    this.alterClass(this.formAluno.get('instrumento')?.value, 'label-instrumento');
-    this.alterClass(this.formAluno.get('dataNascimento')?.value, 'label-dataNasc');
-    this.alterClass(this.formAluno.get('esquemaAulas')?.get('turno')?.value, 'label-turno');
-    this.alterClass(this.formAluno.get('esquemaAulas')?.get('dias')?.value, 'label-dias');
+    this.alterClass(
+      this.formAluno.get('instrumento')?.value,
+      'label-instrumento'
+    );
+    this.alterClass(
+      this.formAluno.get('dataNascimento')?.value,
+      'label-dataNasc'
+    );
+    this.alterClass(
+      this.formAluno.get('esquemaAulas')?.get('turno')?.value,
+      'label-turno'
+    );
+    this.alterClass(
+      this.formAluno.get('esquemaAulas')?.get('dias')?.value,
+      'label-dias'
+    );
     this.validateValues();
   }
   validateValues() {
-    this.validatorTelefone(this.formAluno.get('telefone')?.value)
+    this.validatorTelefone(this.formAluno.get('telefone')?.value);
     this.validateDate(this.formAluno.get('dataNascimento')?.value);
   }
   alterClass(atributo: FormData, id: string) {
@@ -154,14 +172,27 @@ export class SubscribeComponent {
   // constroi mensagem para ser enviada no whatsapp
   buildMessage() {
     const data = this.formAluno.value;
-    let message = `Olá, meu nome é *${data.nome}*, idade: *${this.calculateAge(data.dataNascimento)}*,tenho interesse em fazer aulas de *${this.instrumentos.find(x => x.id == data.instrumento)?.name}*.%0a`;
-    message += `Prefiro aulas no período da *${this.turnos.find(x => x.id == data.esquemaAulas.turno)?.name}*.%0a`;
-    message += `Tenho disponibilidade *${this.dias.find(x => x.id == data.esquemaAulas.dias)?.name}*.%0a`;
+    let message = `Olá, meu nome é *${data.nome}*, idade: *${this.calculateAge(
+      data.dataNascimento
+    )}*,tenho interesse em fazer aulas de *${
+      this.instrumentos.find((x) => x.id == data.instrumento)?.name
+    }*.%0a`;
+    message += `Prefiro aulas no período da *${
+      this.turnos.find((x) => x.id == data.esquemaAulas.turno)?.name
+    }*.%0a`;
+    message += `Tenho disponibilidade *${
+      this.dias.find((x) => x.id == data.esquemaAulas.dias)?.name
+    }*.%0a`;
     message += `Contato: *${data.telefone}*.%0a`;
-    message += `Data de Nascimento: *${this.formatDate(data.dataNascimento)}*.%0a`;
+    message += `Data de Nascimento: *${this.formatDate(
+      data.dataNascimento
+    )}*.%0a`;
     message += `Obrigado!`;
 
-    window.open(`https://api.whatsapp.com/send?phone=5569981062874&text=${message}`, '_blank');
+    window.open(
+      `https://api.whatsapp.com/send?phone=5569981062874&text=${message}`,
+      '_blank'
+    );
   }
   formatDate(date: Date) {
     let data = new Date(date);
@@ -169,15 +200,17 @@ export class SubscribeComponent {
       let dia = data.getDate() + 1;
       let mes = data.getMonth() + 1;
       let ano = data.getFullYear();
-      return `${dia < 10 ? '0' + dia : dia}/${mes < 10 ? '0' + mes : mes}/${ano}`;
+      return `${dia < 10 ? '0' + dia : dia}/${
+        mes < 10 ? '0' + mes : mes
+      }/${ano}`;
     } else {
-      return "Inválida"
+      return 'Inválida';
     }
   }
   validateDate(date: Date) {
     let data = new Date(date);
     //a data não pode ser maior que a data atual ou menor que 5 anos
-    if (data > new Date() || this.calculateAge(data) == "Inválida") {
+    if (data > new Date() || this.calculateAge(data) == 'Inválida') {
       //limpar campo da data de nascimento
       this.formAluno.get('dataNascimento')?.setValue('');
       return false;
@@ -192,7 +225,7 @@ export class SubscribeComponent {
     if (ageDate.getUTCFullYear() - 1970 > 4) {
       return ageDate.getUTCFullYear() - 1970;
     }
-    return "Inválida"
+    return 'Inválida';
   }
 }
 export class Aluno {
@@ -201,7 +234,7 @@ export class Aluno {
   genero: number = 0;
   dataNascimento: Date | null = null;
   instrumento: string = '';
-  esquemaAulas: EsquemaAula = new EsquemaAula;
+  esquemaAulas: EsquemaAula = new EsquemaAula();
 }
 
 export class EsquemaAula {
