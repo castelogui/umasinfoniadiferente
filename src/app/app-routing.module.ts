@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { SobreComponent } from './sobre/sobre.component';
 import { AulasComponent } from './aulas/aulas.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
+import { TimelineComponent } from './timeline/timeline.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'sobre', component: SobreComponent },
+
+  { path: '', component: HomeComponent },
   { path: 'aulas', component: AulasComponent },
   { path: 'inscricao', component: SubscribeComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'historia', component: TimelineComponent }
 ];
 
 @NgModule({

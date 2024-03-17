@@ -1,0 +1,90 @@
+.timeline
+  display: flex
+  flex-direction: column
+  max-width: 100%
+  align-items: center
+  padding: 2rem 0
+  transition: all 0.7s ease-in-out
+
+  .line
+    content: ''
+    position: relative
+    width: 0px
+    border: 2px dashed #414141
+    height: 3rem
+    background: #fff
+
+  .circle
+    content: ''
+    position: relative
+    width: 20px
+    height: 20px
+    border-radius: 50%
+    background: #fff
+    border: 2px solid #414141
+    margin: 0 auto
+    z-index: 1
+
+.timeline-item
+  display: flex
+  flex-direction: column
+  align-items: center
+  transition: all 0.7s ease-in-out
+
+.timeline-content
+  background: linear-gradient(45deg, #FFD70080, #FFA550)
+  display: flex
+  width: 800px
+  flex-direction: row
+  border-radius: 30px
+  justify-content: space-around
+  transition: all 0.7s ease-in-out
+  padding: 2rem
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
+.timeline-details
+  display: flex
+  transition: all 0.7s ease-in-out
+  flex-direction: column
+  width: 50%
+.title
+  font-size: 2rem
+  transition: all 0.7s ease-in-out
+  font-weight: bold
+.date
+  font-size: 18px
+  font-weight: bold
+
+.description
+  font-size: 14px
+  text-align: justify
+  margin-right: 20px
+
+img
+  width: 50%
+  transition: all 0.3s ease-in-out
+  border: 2px solid #414141
+  border-radius: 20px
+
+@media (max-width: 870px)
+  .timeline-content
+    flex-direction: column
+    width: 90%
+    transition: all 0.7s ease-in-out
+    padding: 1rem 2rem
+    align-items: center
+  .timeline-details
+    transition: all 0.7s ease-in-out
+    width: 100%
+  .timeline-item
+    padding: 0 2rem
+    transition: all 0.7s ease-in-out
+  .title
+    font-size: 1.5rem
+    transition: all 0.7s ease-in-out
+  .info
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+  img
+    width: 75%
+    transition: all 0.3s ease-in-out
