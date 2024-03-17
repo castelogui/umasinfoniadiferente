@@ -33,7 +33,6 @@
     "@types/jasmine": "~4.3.6",
     "concurrently": "^8.2.2",
     "jasmine-core": "~4.6.0",
-    "json-server": "1.0.0-alpha.23",
     "karma": "~6.4.3",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.1",
