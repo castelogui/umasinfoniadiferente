@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -6,12 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.sass']
 })
 export class NavbarComponent {
-  // ao clicar no botão, verifica se existe a variavel show, se existir remove, se não existir adiciona
+  toggle = document.getElementsByClassName('navbar-collapse')
   toggleCollapse() {
-    let toggle = document.getElementsByClassName('navbar-collapse')
-    if (toggle[0].classList.contains('show'))
-      toggle[0].classList.remove('show')
+    if (this.toggle[0].classList.contains('show'))
+      this.toggle[0].classList.remove('show')
     else
-      toggle[0].classList.add('show')
+      this.toggle[0].classList.add('show')
+  }
+  constructor(private router: Router) {
+    this.router.events.subscribe((event) => {
+      this.toggle[0].classList.remove('show')
+    });
   }
 }

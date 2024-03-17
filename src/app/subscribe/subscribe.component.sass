@@ -9,18 +9,45 @@
   padding: 0
 .title
   font-size: 2.5rem
+@keyframes animation-img
+  to
+    opacity: .50
+@keyframes is-passing
+  from
+    transform: translateY(-10px)
+
+.icon
+  position: relative
+  color: #ffffff
+  font-size: 4rem
+  transition: 0.3s ease
+  animation: animation-img 1s ease infinite 
 .img
-  width: 130px
-  border: 1px solid #ccc
-  border-radius: 40px
+  align-items: center
+  justify-content: center
+  display: flex
   margin: 0 0 3rem 0
-  transition: 0.3s
+  transition: all 0.3s ease
+  width: 190px
+  height: 190px
+  border-radius: 10%
+  background-color: #ddd
+  
+img
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
+  width: 190px
+  animation: none
+  height: 190px
+  border-radius: 10%
 form
   display: flex
   flex-direction: column
   width: 40%
   height: 100%
   padding: 0 0 2rem 0
+  transition: 0.3s ease
 .form-check, .form-check-label
   display: flex
   flex-direction: row
@@ -30,6 +57,7 @@ form
     cursor: pointer
 .label, .label-check, .label-esquema
   font-size: 1.2rem
+  transition: all 0.3s ease
   padding: 0.8rem 0
 .label-esquema
   padding: 0 0 1.5rem 0
@@ -45,7 +73,7 @@ form
   border-radius: 7px
   font-size: 1.4rem
   border: 1px solid #ccc
-  transition: border-color 0.3s ease
+  transition: all 0.3s ease
   padding: 0 0.5rem
 .form-control:focus
   transition: 0.2s
@@ -63,6 +91,7 @@ form
   width: 100%
   position: relative
   margin-bottom: 25px
+  transition: all 0.3s ease
 .input-group
   flex-direction: row
   display: flex
@@ -85,6 +114,7 @@ input[type=date]:focus::-webkit-datetime-edit
   flex-direction: row
   justify-content: space-between
   gap: 2rem
+  transition: all 0.3s ease
 .btn
   width: 100%
   height: 2.5rem
@@ -100,6 +130,7 @@ input[type=date]:focus::-webkit-datetime-edit
   color: #414141
   font-size: 1.2rem
   font-weight: 600
+  transition: all 0.3s ease
   font-variant-caps: all-small-caps
   &:hover
     box-shadow: 0 0 15px rgb(0, 0, 0, 0.3)
@@ -121,6 +152,7 @@ input[type=date]:focus::-webkit-datetime-edit
   .input-group
     flex-direction: column
     width: 100%
+    transition: all 0.3s ease
     .form-group
       width: 100%
   .input-group-radios
@@ -129,9 +161,16 @@ input[type=date]:focus::-webkit-datetime-edit
 @media (max-width: 768px)
   .content
     padding: 0 0 2.5rem 0
+  .img, img
+    width: 100px
+    height: 100px
+    .icon
+      font-size: 2rem
+      transition: 0.3s ease
   form
     width: 80%
     padding: 0
+    transition: all 0.3s ease
     .input-group
       flex-direction: column
       width: 100%
@@ -144,6 +183,7 @@ input[type=date]:focus::-webkit-datetime-edit
       align-items: center
       flex-direction: column-reverse
       width: 100%
+      transition: all 0.3s ease
       height: 100px
       gap: 0
       .btn

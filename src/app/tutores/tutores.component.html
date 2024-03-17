@@ -10,6 +10,22 @@
         </div>
       </div>
       <div class="body">
+        <div class="contact">
+          <a *ngIf="tutor.insta"
+            href="https://www.instagram.com/{{tutor.insta}}" class="button"
+            target="_blank">
+            <span>
+              <i class="fa-brands fa-instagram"></i>
+            </span>
+          </a>
+          <a *ngIf="tutor.contact"
+            href="https://api.whatsapp.com/send?phone={{tutor.contact}}"
+            class="button" target="_blank">
+            <span class="button">
+              <i class="fa-brands fa-whatsapp"></i>
+            </span>
+          </a>
+        </div>
         <p class="descricao">
           {{tutor.descricao}}
         </p>

@@ -1,6 +1,9 @@
 <div class="content">
   <h2 class="title">Inscreva-se</h2>
-  <img class="img" src="{{instrumentoImgSelecionado}}" alt="">
+  <div class="img">
+    <i *ngIf="!instrumentoImgSelecionado" class="icon fa-solid fa-image"></i>
+    <img *ngIf="instrumentoImgSelecionado" src="{{instrumentoImgSelecionado}}" alt="">
+  </div>
   <form [formGroup]="formAluno" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <select class="form-control" name="instrumento" id="instrumento" formControlName="instrumento">
