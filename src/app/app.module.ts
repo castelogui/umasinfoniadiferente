@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { SobreComponent } from './sobre/sobre.component';
 import { AulasComponent } from './aulas/aulas.component';
 import { CardAulasComponent } from './card-aulas/card-aulas.component';
 import { DetailsComponent } from './details/details.component';
@@ -26,7 +25,6 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    SobreComponent,
     AulasComponent,
     CardAulasComponent,
     DetailsComponent,
