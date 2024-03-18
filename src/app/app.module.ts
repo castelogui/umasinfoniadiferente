@@ -20,6 +20,15 @@ import { SubscribeComponent } from './pages/subscribe/subscribe.component';
 import { AulasComponent } from './pages/aulas/aulas.component';
 import { TimelineComponent } from './pages/timeline/timeline.component';
 import { HttpClientModule } from '@angular/common/http';
+// Admin
+import { LoginComponent } from './pages/login/login.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { AdminNavbarComponent } from './pages/admin/components/admin-navbar/admin-navbar.component';
+import { AdminSettingsComponent } from './pages/admin/pages/admin-settings/admin-settings.component';
+import { AdminAulasComponent } from './pages/admin/pages/admin-aulas/admin-aulas.component';
+import { AdminTutoresComponent } from './pages/admin/pages/admin-tutores/admin-tutores.component';
+import { AdminEventosComponent } from './pages/admin/pages/admin-eventos/admin-eventos.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +45,15 @@ import { HttpClientModule } from '@angular/common/http';
     SubscribeComponent,
     MenuNavComponent,
     TimelineComponent,
+    LoginComponent,
+    AdminComponent,
+    AdminNavbarComponent,
+    AdminSettingsComponent,
+    AdminSettingsComponent,
+    AdminAulasComponent,
+    AdminTutoresComponent,
+    AdminEventosComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
