@@ -29,6 +29,8 @@ import { AdminAulasComponent } from './pages/admin/pages/admin-aulas/admin-aulas
 import { AdminTutoresComponent } from './pages/admin/pages/admin-tutores/admin-tutores.component';
 import { AdminEventosComponent } from './pages/admin/pages/admin-eventos/admin-eventos.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { AdminUsersComponent } from './pages/admin/pages/admin-users/admin-users.component';
+import { AddUserComponent } from './pages/admin/pages/admin-users/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     AdminTutoresComponent,
     AdminEventosComponent,
     PageNotFoundComponent,
+    AdminUsersComponent,
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,
