@@ -30,8 +30,8 @@ import { AdminTutoresComponent } from './pages/admin/pages/admin-tutores/admin-t
 import { AdminEventosComponent } from './pages/admin/pages/admin-eventos/admin-eventos.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { AdminUsersComponent } from './pages/admin/pages/admin-users/admin-users.component';
-import { AddUserComponent } from './pages/admin/pages/admin-users/add-user/add-user.component';
 import { InputMaskModule } from '@ngneat/input-mask';
+import { FormUserComponent } from './pages/admin/pages/admin-users/form-user/form-user.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +58,7 @@ import { InputMaskModule } from '@ngneat/input-mask';
     AdminEventosComponent,
     PageNotFoundComponent,
     AdminUsersComponent,
-    AddUserComponent,
+    FormUserComponent,
   ],
   imports: [
     BrowserModule,

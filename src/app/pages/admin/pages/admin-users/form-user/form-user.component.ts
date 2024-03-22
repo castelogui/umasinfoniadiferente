@@ -1,17 +1,14 @@
-import { Component, Injectable, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AdminUsers } from '../../../classes/admin-users';
 import { AdminUsersService } from '../../../services/admin-users/admin-users.service';
+import { AdminUsers } from '../../../classes/admin-users';
 
 @Component({
-  selector: 'app-add-user',
-  templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.sass'],
+  selector: 'app-form-user',
+  templateUrl: './form-user.component.html',
+  styleUrls: ['./form-user.component.sass']
 })
-@Injectable({
-  providedIn: 'root',
-})
-export class AddUserComponent implements OnInit {
+export class FormUserComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private _userService: AdminUsersService
