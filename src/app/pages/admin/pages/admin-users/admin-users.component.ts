@@ -10,23 +10,24 @@ import { AdminUsers } from '../../classes/admin-users';
 export class AdminUsersComponent implements OnInit {
   constructor(private _userService: AdminUsersService) {}
   public users: AdminUsers[] = [];
+  public userEdit: AdminUsers = {} as AdminUsers;
 
   ngOnInit(): void {
-    this._userService.getUsers().subscribe((retorno) => {
-      this.users = retorno.map((item) => {
-        return new AdminUsers(
-          item.id,
-          item.avatar,
-          item.nome,
-          item.funcao,
-          item.password,
-          item.email,
-          item.contact,
-          item.permissoes,
-          item.insta,
-          item.descricao
-        );
-      });
+    this.getUsers();
+  }
+  deleteUser(user_id: string) {
+    this._userService.deleteUser(user_id).subscribe((result) => {
+      console.log(result);
+    });
+  }
+  getUser(user_id: string) {
+    this._userService.getUser(user_id).subscribe((user) => {
+      this.userEdit = user;
+    });
+  }
+  getUsers() {
+    this._userService.getUsers().subscribe((users) => {
+      this.users = users;
     });
   }
 }

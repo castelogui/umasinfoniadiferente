@@ -1,10 +1,61 @@
-import { Component } from '@angular/core';
+import { Component, Injectable, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { AdminUsers } from '../../../classes/admin-users';
+import { AdminUsersService } from '../../../services/admin-users/admin-users.service';
 
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.sass']
+  styleUrls: ['./add-user.component.sass'],
 })
-export class AddUserComponent {
+@Injectable({
+  providedIn: 'root',
+})
+export class AddUserComponent implements OnInit {
+  constructor(
+    private fb: FormBuilder,
+    private _userService: AdminUsersService
+  ) {}
 
+  @Input() userEdit: AdminUsers = {} as AdminUsers;
+  userForm: FormGroup = new FormGroup({});
+  public user: AdminUsers = {} as AdminUsers;
+
+  ngOnInit(): void {
+    this.initForm();
+    this.loadUserData();
+  }
+  initForm(): void {
+    this.userForm = this.fb.group({
+      nome: [''],
+      funcao: [''],
+      email: [''],
+      contact: [''],
+      descricao: [''],
+      permissao: [''],
+      password: [''],
+      status: [false],
+      insta: [''],
+    });
+  }
+  loadUserData(): void {
+    this.userForm.patchValue(this.userEdit);
+  }
+  clearUserEdit() {
+    this.userEdit = {} as AdminUsers;
+  }
+  SaveData() {
+    if (this.userEdit.id) {
+      this._userService
+        .editUser(this.userEdit.id, this.userForm.value)
+        .subscribe((result) => {
+          this.clearUserEdit();
+          window.location.reload();
+        });
+    } else {
+      this._userService.saveUser(this.userForm.value).subscribe((result) => {
+        window.location.reload();
+      });
+    }
+  }
 }

@@ -14,7 +14,6 @@ export class AdminNavbarComponent implements OnInit {
     this.router.events.subscribe((event) => {
       this.routeActive =
         this.router.routerState.snapshot.url.split('/admin/')[1];
-      console.log(this.routeActive);
     });
   }
 }

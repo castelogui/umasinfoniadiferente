@@ -1,1 +1,89 @@
-<p>add-user works!</p>
+<script type="text/javascript">
+    $("#telefone, #celular").mask("(00) 0000-0000");
+    </script>
+<div class="modal-header">
+  <h1 class="modal-title fs-5" id="usuarioModalLabel" *ngIf="!userEdit.id">
+    Novo Usuário
+  </h1>
+  <h1 class="modal-title fs-5" id="usuarioModalLabel" *ngIf="userEdit.id">
+    Editar Usuário
+  </h1>
+  <button type="button" class="btn-close" data-bs-dismiss="modal"
+    aria-label="Close" (click)="clearUserEdit()"></button>
+</div>
+<div class="modal-body">
+  <form class="row g-3" [formGroup]="userForm">
+    <div class="col-md-6">
+      <label for="inputNome4" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="inputNome4"
+        formControlName="nome" placeholder="Nome Sobrenome"
+        ngModel="{{userEdit.nome}}">
+    </div>
+    <div class="col-md-6">
+      <label for="inputFuncao" class="form-label">Função</label>
+      <input type="text" class="form-control" id="inputFuncao"
+        formControlName="funcao" placeholder="Funções"
+        ngModel="{{userEdit.funcao}}">
+    </div>
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Email</label>
+      <input type="text" class="form-control" id="inputEmail4"
+        formControlName="email" placeholder="exemplo@email.com"
+        ngModel="{{userEdit.email}}">
+    </div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">Password</label>
+      <input type="password" class="form-control" id="inputPassword4"
+        formControlName="password" placeholder="********"
+        ngModel="{{userEdit.password}}">
+    </div>
+    <div class="col-md-6">
+      <label for="inputContato" class="form-label">Contato WhatsApp</label>
+      <input type="text" class="form-control" id="inputContato"
+        formControlName="contact" placeholder="(00) 00000-0000"
+        ngModel="{{userEdit.contact}}">
+      <label for="inputInstagram" class="form-label">Instagram</label>
+      <input type="text" class="form-control" id="inputInstagram"
+        formControlName="insta" placeholder="@usuario"
+        ngModel="{{userEdit.insta}}">
+    </div>
+
+    <div class="col-6">
+      <label for="inputPermissoes" class="form-label">Permissões</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio"
+          id="operador" formControlName="permissao" value="operador"
+          ngModel="{{userEdit.permissao}}">
+        <label class="form-check-label" for="operador">
+          Operador
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio"
+          id="administrador" formControlName="permissao" value="administrador"
+          ngModel="{{userEdit.permissao}}">
+        <label class="form-check-label" for="administrador">
+          Administrador
+        </label>
+      </div>
+      <label for="inputPermissoes" class="form-label">Status</label>
+      <div class="form-check col-md-2">
+        <input class="form-check-input" formControlName="status" type="checkbox"
+          id="status" checked="{{userEdit.status}}"
+          ngModel="{{userEdit.status}}">
+        <label class="form-check-label" for="gridCheck">Ativo</label>
+      </div>
+    </div>
+
+  </form>
+</div>
+<div class="col-12">
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary"
+      data-bs-dismiss="modal" (click)="clearUserEdit()">Cancelar</button>
+    <button *ngIf="!userEdit.id" type="submit" class="btn btn-primary"
+      data-bs-dismiss="modal" (click)="SaveData()">Salvar</button>
+    <button *ngIf="userEdit.id" type="submit" class="btn btn-success"
+      data-bs-dismiss="modal" (click)="SaveData()">Editar</button>
+  </div>
+</div>

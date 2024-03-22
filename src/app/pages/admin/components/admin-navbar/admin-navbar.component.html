@@ -11,24 +11,38 @@
       <ul class="nav nav-tabs me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link"
-            [ngClass]="{'active': routeActive === 'settings'}"
+            routerLink="/admin/settings"
             aria-current="page"
-            href="/admin/settings">Configurações</a>
+            ariaCurrentWhenActive="page"
+            [ngClass]="{'active': routeActive === 'settings'}"
+            routerLinkActive="active">Configurações</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active': routeActive === 'aulas'}"
+          <a class="nav-link" routerLink="/admin/aulas"
+            aria-current="page"
+            ariaCurrentWhenActive="page"
+            [ngClass]="{'active': routeActive === 'aulas'}"
             href="/admin/aulas">Aulas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active': routeActive === 'events'}"
+          <a class="nav-link" routerLink="/admin/events"
+            aria-current="page"
+            ariaCurrentWhenActive="page"
+            [ngClass]="{'active': routeActive === 'events'}"
             href="/admin/events">Eventos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active': routeActive === 'tutors'}"
+          <a class="nav-link" routerLink="/admin/tutors"
+            aria-current="page"
+            ariaCurrentWhenActive="page"
+            [ngClass]="{'active': routeActive === 'tutors'}"
             href="/admin/tutors">Tutores</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active': routeActive === 'users'}"
+          <a class="nav-link" routerLink="/admin/users"
+            aria-current="page"
+            ariaCurrentWhenActive="page"
+            [ngClass]="{'active': routeActive === 'users'}"
             href="/admin/users">Usuários</a>
         </li>
         <!--
