@@ -31,6 +31,7 @@ import { AdminEventosComponent } from './pages/admin/pages/admin-eventos/admin-e
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { AdminUsersComponent } from './pages/admin/pages/admin-users/admin-users.component';
 import { AddUserComponent } from './pages/admin/pages/admin-users/add-user/add-user.component';
+import { InputMaskModule } from '@ngneat/input-mask';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { AddUserComponent } from './pages/admin/pages/admin-users/add-user/add-u
     GoogleMapsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    InputMaskModule.forRoot({ inputSelector: 'input', isAsync: true }),
   ],
   providers: [],
   bootstrap: [AppComponent],
