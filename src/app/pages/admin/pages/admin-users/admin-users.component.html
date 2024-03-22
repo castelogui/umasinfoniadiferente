@@ -26,7 +26,8 @@
         <td>{{user.nome}}</td>
         <td>{{user.funcao}}</td>
         <td>{{user.email}}</td>
-        <td>{{user.status}}</td>
+        <td *ngIf="user.status === 'true'">Ativo</td>
+        <td *ngIf="user.status === 'false'">Inativo</td>
         <td>
           <button type="button" class="btn btn-sm btn-outline-secondary"
             data-bs-toggle="modal"
@@ -34,10 +35,6 @@
             (click)="getUser(user.id)">
             <i class="fa-solid fa-pen"></i>
           </button>
-          <a type="button" class="btn btn-sm btn-outline-danger"
-            href="/admin/users" (click)="deleteUser(user.id)">
-            <i class="fa-solid fa-trash"></i>
-          </a>
         </td>
       </tr>
     </tbody>
@@ -48,7 +45,7 @@
   aria-labelledby="usuarioModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <app-form-user [userEdit]="userEdit" ></app-form-user>
+      <app-form-user [userEdit]="userEdit"></app-form-user>
     </div>
   </div>
 </div>

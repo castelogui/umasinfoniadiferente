@@ -15,11 +15,6 @@ export class AdminUsersComponent implements OnInit {
   ngOnInit(): void {
     this.getUsers();
   }
-  deleteUser(user_id: string) {
-    this._userService.deleteUser(user_id).subscribe((result) => {
-      console.log(result);
-    });
-  }
   getUser(user_id: string) {
     this._userService.getUser(user_id).subscribe((user) => {
       this.userEdit = user;

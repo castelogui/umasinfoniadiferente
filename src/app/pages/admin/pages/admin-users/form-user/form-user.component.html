@@ -50,28 +50,51 @@
 
     <div class="col-6">
       <label for="inputPermissoes" class="form-label">Permissões</label>
-      <div class="form-check">
-        <input class="form-check-input" type="radio"
-          id="operador" formControlName="permissao" value="operador"
-          ngModel="{{userEdit.permissao}}">
-        <label class="form-check-label" for="operador">
-          Operador
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio"
-          id="administrador" formControlName="permissao" value="administrador"
-          ngModel="{{userEdit.permissao}}">
-        <label class="form-check-label" for="administrador">
-          Administrador
-        </label>
+      <div class="row g-1">
+        <div class="col-6">
+          <div class="form-check">
+            <input class="form-check-input" type="radio"
+              id="operador" formControlName="permissao" value="operador"
+              ngModel="{{userEdit.permissao}}">
+            <label class="form-check-label" for="operador">
+              Operador
+            </label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-check">
+            <input class="form-check-input" type="radio"
+              id="administrador" formControlName="permissao"
+              value="administrador"
+              ngModel="{{userEdit.permissao}}">
+            <label class="form-check-label" for="administrador">
+              Administrador
+            </label>
+          </div>
+        </div>
       </div>
       <label for="inputPermissoes" class="form-label">Status</label>
-      <div class="form-check col-md-2">
-        <input class="form-check-input" formControlName="status" type="checkbox"
-          id="status" checked="{{userEdit.status}}"
-          ngModel="{{userEdit.status}}">
-        <label class="form-check-label" for="gridCheck">Ativo</label>
+      <div class="row g-1">
+        <div class="col-6">
+          <div class="form-check">
+            <input class="form-check-input" type="radio"
+              id="ativo" formControlName="status" value={{true}}
+              ngModel="{{userEdit.status}}">
+            <label class="form-check-label" for="ativo">
+              Ativo
+            </label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-check">
+            <input class="form-check-input" type="radio"
+              id="inativo" formControlName="status" value={{false}}
+              ngModel="{{userEdit.status}}">
+            <label class="form-check-label" for="inativo">
+              Inativo
+            </label>
+          </div>
+        </div>
       </div>
     </div>
   </form>
@@ -82,6 +105,9 @@
       data-bs-dismiss="modal" (click)="clearUserEdit()">Cancelar</button>
     <button *ngIf="!userEdit.id" type="submit" class="btn btn-primary"
       data-bs-dismiss="modal" (click)="SaveData()">Salvar</button>
+    <a *ngIf="userEdit.id" type="submit" class="btn btn-danger"
+      (click)="deleteUser(userEdit.id)"
+      href="/admin/users">Excluir</a>
     <button *ngIf="userEdit.id" type="submit" class="btn btn-success"
       data-bs-dismiss="modal" (click)="SaveData()">Editar</button>
   </div>

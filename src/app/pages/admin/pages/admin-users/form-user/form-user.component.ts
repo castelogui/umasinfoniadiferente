@@ -41,6 +41,11 @@ export class FormUserComponent implements OnInit {
   clearUserEdit() {
     this.userEdit = {} as AdminUsers;
   }
+  deleteUser(user_id: string) {
+    this._userService.deleteUser(user_id).subscribe((result) => {
+      console.log(result);
+    });
+  }
   SaveData() {
     if (this.userEdit.id) {
       this._userService
