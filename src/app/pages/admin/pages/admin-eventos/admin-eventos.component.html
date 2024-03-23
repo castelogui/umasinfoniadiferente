@@ -1,1 +1,50 @@
-<p>admin-eventos works!</p>
+<div class="container mh-100">
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+    <button type="button" class="btn btn-outline-dark myInput"
+      data-bs-toggle="modal" data-bs-target="#eventoModal">
+      Adicionar
+    </button>
+  </div>
+  <div *ngFor="let event of events">
+    <div class="card mb-3">
+      <button type="button" class="btn btn-sm m-0 p-0 btn-light"
+        data-bs-toggle="modal"
+        data-bs-target="#eventoModal"
+        (click)="getEvent(event.id)">
+        <div class="row g-0 ">
+          <div class="col-md-4">
+            <img src="{{event.img}}" class="img-fluid rounded-start"
+              alt="Imagem {{event.name}}">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body mb-0">
+              <h5 class="card-title">{{event.name}}</h5>
+              <p class="card-text mt-2"
+                *ngFor="let line of event.descricao.split('\n')">{{line}}</p>
+              <p class="card-text">
+                <small class="text-body-secondary">
+                  Em {{formatDate(event.date)}}
+                </small>
+              </p>
+              <p class="card-text">
+                <small class="text-body-secondary">
+                  Atualizado em {{formatDate(event.updatedAt)}}
+                </small>
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="eventoModal" tabindex="-1"
+  aria-labelledby="eventoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <app-form-evento [eventEdit]="eventEdit"></app-form-evento>
+    </div>
+  </div>
+</div>

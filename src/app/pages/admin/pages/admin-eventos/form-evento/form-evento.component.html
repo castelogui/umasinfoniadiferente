@@ -1,0 +1,63 @@
+<div class="modal-header">
+  <h1 class="modal-title fs-5" id="usuarioModalLabel" *ngIf="!eventEdit.id">
+    Novo Usuário
+  </h1>
+  <h1 class="modal-title fs-5" id="usuarioModalLabel" *ngIf="eventEdit.id">
+    Editar Usuário
+  </h1>
+  <button type="button" class="btn-close" data-bs-dismiss="modal"
+    aria-label="Close" (click)="clearEventEdit()"></button>
+</div>
+<div class="modal-body">
+  <form class="row g-3" [formGroup]="eventForm">
+    <div class="col-md-6">
+      <label for="inputNome" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="inputNome"
+        formControlName="name" placeholder="Titulo"
+        ngModel="{{eventEdit.name}}">
+    </div>
+    <div class="col-md-6">
+      <label for="inputDate" class="form-label">Data</label>
+      <input type="datetime-local" class="form-control" id="inputDate"
+        formControlName="date"
+        ngModel="{{eventEdit.date}}">
+    </div>
+    <div class="col-md-6">
+
+      <label for="inputImagem" class="form-label">Imagem Link</label>
+      <textarea type="text" class="form-control" id="inputImagem"
+        formControlName="img" placeholder="https://***.(png, jpg, bmp)"
+        [(ngModel)]="eventEdit.img" style="height: 140px;"></textarea>
+    </div>
+    <div class="col-md-6">
+      <p class="m-0">
+        <label for="previewImagem" class="form-label">Imagem Preview</label>
+      </p>
+      <div class="text-center">
+        <img [src]="eventEdit.img" style="height: 140px;"
+          class="rounded img-thumbnail img-fluid"
+          alt="Imagem {{eventEdit.name}}">
+      </div>
+    </div>
+    <div class="col-md-12">
+      <label for="inputDescricao" class="form-label">Descrição Do Evento</label>
+      <textarea type="text" class="form-control" id="inputDescricao"
+        formControlName="descricao"
+        ngModel="{{eventEdit.descricao}}" style="height: 140px;"></textarea>
+    </div>
+
+  </form>
+</div>
+<div class="col-12">
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary"
+      data-bs-dismiss="modal" (click)="clearEventEdit()">Cancelar</button>
+    <button *ngIf="!eventEdit.id" type="submit" class="btn btn-primary"
+      data-bs-dismiss="modal" (click)="SaveData()">Salvar</button>
+    <a *ngIf="eventEdit.id" type="submit" class="btn btn-danger"
+      (click)="deleteEvent(eventEdit.id)"
+      href="/admin/events">Excluir</a>
+    <button *ngIf="eventEdit.id" type="submit" class="btn btn-success"
+      data-bs-dismiss="modal" (click)="SaveData()">Editar</button>
+  </div>
+</div>

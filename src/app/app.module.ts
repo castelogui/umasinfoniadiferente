@@ -31,7 +31,7 @@ import { AdminEventosComponent } from './pages/admin/pages/admin-eventos/admin-e
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { AdminUsersComponent } from './pages/admin/pages/admin-users/admin-users.component';
 import { InputMaskModule } from '@ngneat/input-mask';
-import { FormUserComponent } from './pages/admin/pages/admin-users/form-user/form-user.component';
+import { FormUserComponent } from './pages/admin/pages/admin-users/form-user/form-user.component';import { FormEventoComponent } from './pages/admin/pages/admin-eventos/form-evento/form-evento.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +59,7 @@ import { FormUserComponent } from './pages/admin/pages/admin-users/form-user/for
     PageNotFoundComponent,
     AdminUsersComponent,
     FormUserComponent,
+    FormEventoComponent,
   ],
   imports: [
     BrowserModule,
