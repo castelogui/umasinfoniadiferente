@@ -1,1 +1,45 @@
-<p>admin-aulas works!</p>
+<div class="container mb-3 mb-3">
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+    <button type="button" class="btn btn-outline-dark myInput"
+      data-bs-toggle="modal" data-bs-target="#aulaModal">
+      Adicionar
+    </button>
+  </div>
+  <div class="card border-danger mb-5 mt-2" *ngIf="aulas.length == 0">
+    <div class="card-body">
+      <h5 class="card-title">Nenhuma aula</h5>
+      <p class="card-text">Não existem aulas cadastradas</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let aula of aulas">
+      <div class="card mb-4" (click)="getAula(aula.id)" data-bs-toggle="modal"
+        data-bs-target="#aulaModal">
+        <div class="card-header">
+          <img src="{{aula.img}}" class="card-img-top" alt="...">
+          <h5 class="card-title">{{aula.instrumento}}</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">
+            <span class="badge text-bg-warning" *ngIf="aula.niveis[0] === true">Básico</span>
+            <span class="badge text-bg-primary" *ngIf="aula.niveis[1] === true">Intermediário</span>
+            <span class="badge text-bg-success" *ngIf="aula.niveis[2] === true">Avançado</span>
+          </h6>
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>{{aula.detalhes}}</p>
+            <footer
+              class="blockquote-footer text-end">{{formatValue(aula.valor)}}</footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="aulaModal" tabindex="-1"
+  aria-labelledby="aulaModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <app-form-aula [aulaEdit]="aulaEdit"></app-form-aula>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+<div class="modal-header">
+  <h1 class="modal-title fs-5" id="usuarioModalLabel" *ngIf="!aulaEdit.id">
+    Novo Tutor
+  </h1>
+  <h1 class="modal-title fs-5" id="usuarioModalLabel" *ngIf="aulaEdit.id">
+    Editar Tutor
+  </h1>
+  <button type="button" class="btn-close" data-bs-dismiss="modal"
+    aria-label="Close" (click)="clearAulaEdit()"></button>
+</div>
+<div class="modal-body">
+  <form class="row g-3" [formGroup]="aulaForm">
+    <div class="col-md-6">
+      <label for="inputImagem" class="form-label">Imagem Link</label>
+      <textarea type="text" class="form-control" id="inputImagem"
+        formControlName="img" placeholder="https://***.(png, jpg, bmp)"
+        [(ngModel)]="aulaEdit.img" style="height: 140px;"></textarea>
+    </div>
+    <div class="col-md-6">
+      <p class="m-0">
+        <label for="previewImagem" class="form-label">Imagem Preview</label>
+      </p>
+      <div class="text-center">
+        <img [src]="aulaEdit.img" style="height: 140px;"
+          class="rounded img-thumbnail img-fluid"
+          alt="Imagem {{aulaEdit.instrumento}}">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="inputInstrumento" class="form-label">Instrumento</label>
+      <input type="text" class="form-control" id="inputInstrumento"
+        formControlName="instrumento" placeholder="Instrumento"
+        ngModel="{{aulaEdit.instrumento}}">
+    </div>
+    <div class="col-md-6">
+      <label for="inputDetalhes" class="form-label">Detalhes</label>
+      <input type="text" class="form-control" id="inputDetalhes"
+        formControlName="detalhes" placeholder="Detalhes da aula"
+        ngModel="{{aulaEdit.detalhes}}">
+    </div>
+    <div class="col-md-6">
+      <label for="inputValor" class="form-label">Valor</label>
+      <input type="number" class="form-control" id="inputValor"
+        formControlName="valor" placeholder="R$ 0,00"
+        ngModel="{{aulaEdit.valor}}">
+    </div>
+    <div class="col-md-6" formArrayName="niveis">
+      <label for="inputNiveis" class="form-label">Nível</label>
+      <div class="form-check ">
+        <input class="form-check-input" type="checkbox"
+          id="ckeckNivelBasico" formControlName="0">
+        <label class="form-check-label" for="ckeckNivelBasico">
+          Básico
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox"
+          id="ckeckNivelIntermediario" formControlName="1">
+        <label class="form-check-label" for="ckeckNivelIntermediario">
+          Intermediário
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox"
+          id="ckeckNivelAvancado" formControlName="2">
+        <label class="form-check-label" for="ckeckNivelAvancado">
+          Avançado
+        </label>
+      </div>
+    </div>
+
+    <!--
+
+      <div class="col-6">
+        <label for="inputPermissoes" class="form-label">Status</label>
+        <div class="row g-1">
+          <div class="col-6">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio"
+              id="ativo" formControlName="status" value={{true}}
+              ngModel="{{aulaEdit.status}}">
+              <label class="form-check-label" for="ativo">
+                Ativo
+              </label>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio"
+              id="inativo" formControlName="status" value={{false}}
+              ngModel="{{aulaEdit.status}}">
+              <label class="form-check-label" for="inativo">
+                Inativo
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    -->
+  </form>
+</div>
+<div class="col-12">
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary"
+      data-bs-dismiss="modal" (click)="clearAulaEdit()">Cancelar</button>
+    <button *ngIf="!aulaEdit.id" type="submit" class="btn btn-primary"
+      data-bs-dismiss="modal" (click)="SaveData()">Salvar</button>
+    <a *ngIf="aulaEdit.id" type="submit" class="btn btn-danger"
+      (click)="deleteAula(aulaEdit.id)"
+      href="/admin/aulas">Excluir</a>
+    <button *ngIf="aulaEdit.id" type="submit" class="btn btn-success"
+      data-bs-dismiss="modal" (click)="SaveData()">Editar</button>
+  </div>
+</div>

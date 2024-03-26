@@ -32,6 +32,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { AdminUsersComponent } from './pages/admin/pages/admin-users/admin-users.component';
 import { FormUserComponent } from './pages/admin/pages/admin-users/form-user/form-user.component';import { FormEventoComponent } from './pages/admin/pages/admin-eventos/form-evento/form-evento.component';
 import { FormTutorComponent } from './pages/admin/pages/admin-tutores/form-tutor/form-tutor.component';
+import { FormAulaComponent } from './pages/admin/pages/admin-aulas/form-aula/form-aula.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { FormTutorComponent } from './pages/admin/pages/admin-tutores/form-tutor
     FormUserComponent,
     FormEventoComponent,
     FormTutorComponent,
+    FormAulaComponent,
   ],
   imports: [
     BrowserModule,
