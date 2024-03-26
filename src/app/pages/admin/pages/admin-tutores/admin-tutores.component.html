@@ -1,1 +1,98 @@
-<p>admin-tutores works!</p>
+<div class="container mh-100">
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+    <button type="button" class="btn btn-outline-dark myInput"
+      data-bs-toggle="modal" data-bs-target="#tutorModal">
+      Adicionar
+    </button>
+  </div>
+  <div class="container" *ngFor="let tutor of tutors">
+    <div class="card text-bg-light mb-3">
+      <div class="row g-0">
+        <div class="col-md-2">
+          <picture>
+            <img src="{{tutor.avatar}}" class="img-fluid rounded-start"
+              alt="...">
+          </picture>
+        </div>
+        <div class="col-md-10">
+          <div class="row g-2">
+            <div class="col">
+              <div class="card-body">
+                <h5 class="card-title">{{tutor.nome}}</h5>
+                <p class="card-text">{{tutor.descricao}}</p>
+              </div>
+            </div>
+            <div class="col-5 ml-2 mr-2">
+              <div
+                class="card-body d-grid gap-2 justify-content-md-end">
+                <p class="card-text">
+                  <small class="text-body-secondary">
+                    {{tutor.insta}}
+                  </small>
+                </p>
+                <p class="card-text">
+                  <small class="text-body-secondary">
+                    {{tutor.contact}}
+                  </small>
+                </p>
+                <button type="button"
+                  class="btn btn-sm btn-outline-secondary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#tutorModal"
+                  (click)="getTutor(tutor.id)">
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Avatar</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Função</th>
+        <th scope="col">Contact</th>
+        <th scope="col">Insta</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tutor of tutors">
+        <th scope="row">{{tutor.id}}</th>
+        <td>
+
+        </td>
+        <td>{{tutor.nome}}</td>
+        <td>{{tutor.funcao}}</td>
+        <td>{{tutor.contact}}</td>
+        <td>{{tutor.insta}}</td>
+        <td *ngIf="tutor.status === 'true'">Ativo</td>
+        <td *ngIf="tutor.status === 'false'">Inativo</td>
+        <td>
+          <button type="button" class="btn btn-sm btn-outline-secondary"
+            data-bs-toggle="modal"
+            data-bs-target="#tutorModal"
+            (click)="getTutor(tutor.id)">
+            <i class="fa-solid fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  -->
+</div>
+
+<div class="modal fade" id="tutorModal" tabindex="-1"
+  aria-labelledby="tutorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <app-form-tutor [tutorEdit]="tutorEdit"></app-form-tutor>
+    </div>
+  </div>
+</div>

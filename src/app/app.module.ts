@@ -30,8 +30,8 @@ import { AdminTutoresComponent } from './pages/admin/pages/admin-tutores/admin-t
 import { AdminEventosComponent } from './pages/admin/pages/admin-eventos/admin-eventos.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { AdminUsersComponent } from './pages/admin/pages/admin-users/admin-users.component';
-import { InputMaskModule } from '@ngneat/input-mask';
 import { FormUserComponent } from './pages/admin/pages/admin-users/form-user/form-user.component';import { FormEventoComponent } from './pages/admin/pages/admin-eventos/form-evento/form-evento.component';
+import { FormTutorComponent } from './pages/admin/pages/admin-tutores/form-tutor/form-tutor.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +60,7 @@ import { FormUserComponent } from './pages/admin/pages/admin-users/form-user/for
     AdminUsersComponent,
     FormUserComponent,
     FormEventoComponent,
+    FormTutorComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +68,6 @@ import { FormUserComponent } from './pages/admin/pages/admin-users/form-user/for
     GoogleMapsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    InputMaskModule.forRoot({ inputSelector: 'input', isAsync: true }),
   ],
   providers: [],
   bootstrap: [AppComponent],
