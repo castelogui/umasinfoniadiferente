@@ -1,4 +1,5 @@
 # Umasinfoniadiferente
+<a href="https://wakatime.com/badge/user/b889ed60-65c5-4d75-a1e7-65c986b29d59/project/19f94ff4-6583-4a9a-aa1e-30aa519ced5e"><img src="https://wakatime.com/badge/user/b889ed60-65c5-4d75-a1e7-65c986b29d59/project/19f94ff4-6583-4a9a-aa1e-30aa519ced5e.svg" alt="wakatime"></a>
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
 
