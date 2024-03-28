@@ -3,14 +3,14 @@ export class AdminAulas {
   instrumento: string;
   img: string;
   detalhes: string;
-  niveis: string;
+  niveis: boolean[];
   valor: number;
   constructor(
     id: string,
     instrumento: string,
     img: string,
     detalhes: string,
-    niveis: string,
+    niveis: boolean[],
     valor: number
   ) {
     this.id = id;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminAulasService } from '../../services/admin-aulas/admin-aulas.service';
 import { AdminAulas } from '../../classes/admin-aulas';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-aulas',
@@ -8,18 +9,23 @@ import { AdminAulas } from '../../classes/admin-aulas';
   styleUrls: ['./admin-aulas.component.sass'],
 })
 export class AdminAulasComponent implements OnInit {
-  constructor(private _aulaService: AdminAulasService) {}
+  constructor(
+    private _aulaService: AdminAulasService,
+    private router: Router
+  ) {}
 
   public aulas: AdminAulas[] = [];
-  public aulaEdit: AdminAulas = {} as AdminAulas;
 
   ngOnInit(): void {
     this.getAulas();
   }
-  getAula(aula_id: string) {
-    this._aulaService.getAula(aula_id).subscribe((aula) => {
-      this.aulaEdit = aula;
+  reload() {
+    this.router.navigate(['/admin/aulas']).then(() => {
+      window.location.reload();
     });
+  }
+  getAula(aula_id: string) {
+    this.router.navigate(['/admin/aulas'], { queryParams: { id: aula_id } });
   }
   getAulas() {
     this._aulaService.getAulas().subscribe((aulas) => {
