@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AdminAulasService } from '../../../services/admin-aulas/admin-aulas.service';
 import { AdminAulas } from '../../../classes/admin-aulas';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-form-aula',
@@ -13,7 +13,6 @@ export class FormAulaComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router,
     private _aulaService: AdminAulasService
   ) {}
 
@@ -39,7 +38,6 @@ export class FormAulaComponent implements OnInit {
         this._aulaService.getAula(params['id']).subscribe((result) => {
           this.aulaEdit = result;
           this.aulaForm.patchValue(this.aulaEdit);
-          console.log(this.aulaForm.value);
         });
       }
     });
