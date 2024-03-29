@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminEventosService } from '../../services/admin-eventos/admin-eventos.service';
 import { AdminEventos } from '../../classes/admin-eventos';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-eventos',
@@ -8,9 +9,11 @@ import { AdminEventos } from '../../classes/admin-eventos';
   styleUrls: ['./admin-eventos.component.sass'],
 })
 export class AdminEventosComponent implements OnInit {
-  constructor(private _eventService: AdminEventosService) {}
+  constructor(
+    private _eventService: AdminEventosService,
+    private router: Router
+  ) {}
   public events: AdminEventos[] = [];
-  public eventEdit: AdminEventos = {} as AdminEventos;
 
   ngOnInit(): void {
     this.getEventos();
@@ -20,10 +23,13 @@ export class AdminEventosComponent implements OnInit {
       this.events = events;
     });
   }
-  getEvent(event_id: string) {
-    this._eventService.getEvent(event_id).subscribe((event) => {
-      this.eventEdit = event;
+  reload() {
+    this.router.navigate(['/admin/events']).then(() => {
+      window.location.reload();
     });
+  }
+  editEvent(event_id: string) {
+    this.router.navigate(['/admin/events'], { queryParams: { id: event_id } });
   }
   formatDate(date: string) {
     return new Date(date).toLocaleDateString();

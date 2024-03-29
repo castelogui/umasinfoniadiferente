@@ -10,7 +10,7 @@
       <button type="button" class="btn btn-sm m-0 p-0 btn-light"
         data-bs-toggle="modal"
         data-bs-target="#eventoModal"
-        (click)="getEvent(event.id)">
+        (click)="editEvent(event.id)">
         <div class="row g-0 ">
           <div class="col-md-4">
             <img src="{{event.img}}" class="img-fluid rounded-start"
@@ -41,10 +41,11 @@
 </div>
 
 <div class="modal fade" id="eventoModal" tabindex="-1"
-  aria-labelledby="eventoModalLabel" aria-hidden="true">
+  aria-labelledby="eventoModalLabel" aria-hidden="true"
+  (hidden.bs.modal)="reload()">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <app-form-evento [eventEdit]="eventEdit"></app-form-evento>
+      <app-form-evento></app-form-evento>
     </div>
   </div>
 </div>

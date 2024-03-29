@@ -54,9 +54,9 @@
       data-bs-dismiss="modal" (click)="clearEventEdit()">Cancelar</button>
     <button *ngIf="!eventEdit.id" type="submit" class="btn btn-primary"
       data-bs-dismiss="modal" (click)="SaveData()">Salvar</button>
-    <a *ngIf="eventEdit.id" type="submit" class="btn btn-danger"
-      (click)="deleteEvent(eventEdit.id)"
-      href="/admin/events">Excluir</a>
+    <button *ngIf="eventEdit.id" type="submit" class="btn btn-danger"
+      data-bs-dismiss="modal"
+      (click)="deleteEvent(eventEdit.id)">Excluir</button>
     <button *ngIf="eventEdit.id" type="submit" class="btn btn-success"
       data-bs-dismiss="modal" (click)="SaveData()">Editar</button>
   </div>
