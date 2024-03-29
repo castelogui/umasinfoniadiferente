@@ -38,10 +38,11 @@
 </div>
 
 <div class="modal fade" id="usuarioModal" tabindex="-1"
-  aria-labelledby="usuarioModalLabel" aria-hidden="true">
+  aria-labelledby="usuarioModalLabel" aria-hidden="true"
+  (hidden.bs.modal)="reload()">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <app-form-user [userEdit]="userEdit"></app-form-user>
+      <app-form-user></app-form-user>
     </div>
   </div>
 </div>

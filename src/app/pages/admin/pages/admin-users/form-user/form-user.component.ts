@@ -2,21 +2,22 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AdminUsersService } from '../../../services/admin-users/admin-users.service';
 import { AdminUsers } from '../../../classes/admin-users';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-form-user',
   templateUrl: './form-user.component.html',
-  styleUrls: ['./form-user.component.sass']
+  styleUrls: ['./form-user.component.sass'],
 })
 export class FormUserComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
+    private route: ActivatedRoute,
     private _userService: AdminUsersService
   ) {}
 
-  @Input() userEdit: AdminUsers = {} as AdminUsers;
+  userEdit: AdminUsers = {} as AdminUsers;
   userForm: FormGroup = new FormGroup({});
-  public user: AdminUsers = {} as AdminUsers;
 
   ngOnInit(): void {
     this.initForm();
@@ -24,40 +25,49 @@ export class FormUserComponent implements OnInit {
   }
   initForm(): void {
     this.userForm = this.fb.group({
-      nome: [''],
-      funcao: [''],
-      email: [''],
-      contact: [''],
-      descricao: [''],
-      permissao: [''],
-      password: [''],
-      status: [false],
-      insta: [''],
+      nome: [this.userEdit.nome],
+      funcao: [this.userEdit.funcao],
+      email: [this.userEdit.email],
+      contact: [this.userEdit.contact],
+      descricao: [this.userEdit.descricao],
+      permissao: [this.userEdit.permissao],
+      password: [this.userEdit.password],
+      status: [this.userEdit.status],
+      insta: [this.userEdit.insta],
     });
   }
   loadUserData(): void {
-    this.userForm.patchValue(this.userEdit);
+    this.route.queryParams.subscribe((params) => {
+      if (params['id']) {
+        this._userService.getUser(params['id']).subscribe((result) => {
+          this.userEdit = result;
+          //this.userForm.patchValue(this.userEdit);
+        });
+      }
+    });
   }
   clearUserEdit() {
     this.userEdit = {} as AdminUsers;
+    this.userForm.patchValue(this.userEdit);
   }
   deleteUser(user_id: string) {
     this._userService.deleteUser(user_id).subscribe((result) => {
       console.log(result);
     });
+    this.clearUserEdit();
   }
   SaveData() {
     if (this.userEdit.id) {
       this._userService
         .editUser(this.userEdit.id, this.userForm.value)
         .subscribe((result) => {
-          this.clearUserEdit();
-          window.location.reload();
+          console.log(result);
         });
     } else {
       this._userService.saveUser(this.userForm.value).subscribe((result) => {
-        window.location.reload();
+        console.log(result);
       });
     }
+    this.clearUserEdit();
   }
 }
