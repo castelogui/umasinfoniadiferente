@@ -89,10 +89,11 @@
 </div>
 
 <div class="modal fade" id="tutorModal" tabindex="-1"
-  aria-labelledby="tutorModalLabel" aria-hidden="true">
+  aria-labelledby="tutorModalLabel" aria-hidden="true"
+  (hidden.bs.modal)="reload()">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <app-form-tutor [tutorEdit]="tutorEdit"></app-form-tutor>
+      <app-form-tutor></app-form-tutor>
     </div>
   </div>
 </div>

@@ -50,6 +50,13 @@ const routes: Routes = [
         path: 'tutors',
         title: 'Professores',
         component: AdminTutoresComponent,
+        children: [
+          {
+            path:':id',
+            title: 'Professor Edit', 
+            component: AdminTutoresComponent
+          }
+        ]
       },
       {
         path: 'users',

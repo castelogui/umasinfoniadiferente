@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminTutorsService } from '../../services/admin-tutors/admin-tutors.service';
 import { AdminTutors } from '../../classes/admin-tutors';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-tutores',
@@ -8,18 +9,23 @@ import { AdminTutors } from '../../classes/admin-tutors';
   styleUrls: ['./admin-tutores.component.sass'],
 })
 export class AdminTutoresComponent implements OnInit {
-  constructor(private _tutorService: AdminTutorsService) {}
+  constructor(
+    private _tutorService: AdminTutorsService,
+    private router: Router
+  ) {}
 
   public tutors: AdminTutors[] = [];
-  public tutorEdit: AdminTutors = {} as AdminTutors;
 
   ngOnInit(): void {
     this.getTutors();
   }
-  getTutor(tutor_id: string) {
-    this._tutorService.getTutor(tutor_id).subscribe((tutor) => {
-      this.tutorEdit = tutor;
+  reload() {
+    this.router.navigate(['/admin/tutors']).then(() => {
+      window.location.reload();
     });
+  }
+  getTutor(tutor_id: string) {
+    this.router.navigate(['/admin/tutors'], { queryParams: { id: tutor_id } });
   }
   getTutors() {
     this._tutorService.getTutors().subscribe((tutors) => {
