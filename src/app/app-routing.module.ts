@@ -33,13 +33,6 @@ const routes: Routes = [
         path: 'aulas',
         title: 'Aulas',
         component: AdminAulasComponent,
-        children: [
-          {
-            path: ':id', 
-            title: 'Aula Edit',
-            component: AdminAulasComponent
-          }
-        ]
       },
       {
         path: 'events',
@@ -50,13 +43,6 @@ const routes: Routes = [
         path: 'tutors',
         title: 'Professores',
         component: AdminTutoresComponent,
-        children: [
-          {
-            path:':id',
-            title: 'Professor Edit', 
-            component: AdminTutoresComponent
-          }
-        ]
       },
       {
         path: 'users',
