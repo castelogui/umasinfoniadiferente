@@ -14,7 +14,7 @@
       <label for="inputImagem" class="form-label">Imagem Link</label>
       <textarea type="text" class="form-control" id="inputImagem"
         formControlName="avatar" placeholder="https://***.(png, jpg, bmp)"
-        [(ngModel)]="tutorEdit.avatar" style="height: 140px;"></textarea>
+        [value]="tutorEdit.avatar" style="height: 140px;"></textarea>
     </div>
     <div class="col-md-6">
       <p class="m-0">
@@ -30,31 +30,31 @@
       <label for="inputNome4" class="form-label">Nome</label>
       <input type="text" class="form-control" id="inputNome4"
         formControlName="nome" placeholder="Nome Sobrenome"
-        ngModel="{{tutorEdit.nome}}">
+        [value]="tutorEdit.nome">
     </div>
     <div class="col-md-6">
       <label for="inputFuncao" class="form-label">Função</label>
       <input type="text" class="form-control" id="inputFuncao"
         formControlName="funcao" placeholder="Funções"
-        ngModel="{{tutorEdit.funcao}}">
+        [value]="tutorEdit.funcao">
     </div>
     <div class="col-md-6">
       <label for="inputContato" class="form-label">Contato WhatsApp</label>
       <input type="text" class="form-control" id="inputContato"
         formControlName="contact" placeholder="(00) 00000-0000"
-        ngModel="{{tutorEdit.contact}}">
+        [value]="tutorEdit.contact">
     </div>
     <div class="col-md-6">
       <label for="inputInstagram" class="form-label">Instagram</label>
       <input type="text" class="form-control" id="inputInstagram"
         formControlName="insta" placeholder="@usuario"
-        ngModel="{{tutorEdit.insta}}">
+        [value]="tutorEdit.insta">
     </div>
     <div class="col-md-12">
       <label for="inputDescricao" class="form-label">Descrição</label>
       <textarea type="text" class="form-control" id="inputDescricao"
         formControlName="descricao" placeholder="Professor de..."
-        [(ngModel)]="tutorEdit.descricao" style="height: 60px;"></textarea>
+        [value]="tutorEdit.descricao" style="height: 60px;"></textarea>
     </div>
   </form>
 </div>

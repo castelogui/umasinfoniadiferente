@@ -14,35 +14,35 @@
       <label for="inputNome4" class="form-label">Nome</label>
       <input type="text" class="form-control" id="inputNome4"
         formControlName="nome" placeholder="Nome Sobrenome"
-        ngModel="{{userEdit.nome}}">
+        [value]="userEdit.nome">
     </div>
     <div class="col-md-6">
       <label for="inputFuncao" class="form-label">Função</label>
       <input type="text" class="form-control" id="inputFuncao"
         formControlName="funcao" placeholder="Funções"
-        ngModel="{{userEdit.funcao}}">
+        [value]="userEdit.funcao">
     </div>
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Email</label>
       <input type="text" class="form-control" id="inputEmail4"
         formControlName="email" placeholder="exemplo@email.com"
-        ngModel="{{userEdit.email}}">
+        [value]="userEdit.email">
     </div>
     <div class="col-md-6">
       <label for="inputPassword4" class="form-label">Password</label>
       <input type="password" class="form-control" id="inputPassword4"
         formControlName="password" placeholder="********"
-        ngModel="{{userEdit.password}}">
+        [value]="userEdit.password">
     </div>
     <div class="col-md-6">
       <label for="inputContato" class="form-label">Contato WhatsApp</label>
       <input type="text" class="form-control" id="inputContato"
         formControlName="contact" placeholder="(00) 00000-0000"
-        ngModel="{{userEdit.contact}}">
+        [value]="userEdit.contact">
       <label for="inputInstagram" class="form-label">Instagram</label>
       <input type="text" class="form-control" id="inputInstagram"
         formControlName="insta" placeholder="@usuario"
-        ngModel="{{userEdit.insta}}">
+        [value]="userEdit.insta">
     </div>
 
     <div class="col-6">
@@ -52,7 +52,7 @@
           <div class="form-check">
             <input class="form-check-input" type="radio"
               id="operador" formControlName="permissao" value="operador"
-              ngModel="{{userEdit.permissao}}">
+              [ngModel]="userEdit.permissao">
             <label class="form-check-label" for="operador">
               Operador
             </label>
@@ -63,7 +63,7 @@
             <input class="form-check-input" type="radio"
               id="administrador" formControlName="permissao"
               value="administrador"
-              ngModel="{{userEdit.permissao}}">
+              [ngModel]="userEdit.permissao">
             <label class="form-check-label" for="administrador">
               Administrador
             </label>
@@ -76,7 +76,7 @@
           <div class="form-check">
             <input class="form-check-input" type="radio"
               id="ativo" formControlName="status" value={{true}}
-              ngModel="{{userEdit.status}}">
+              [ngModel]="userEdit.status">
             <label class="form-check-label" for="ativo">
               Ativo
             </label>
@@ -86,7 +86,7 @@
           <div class="form-check">
             <input class="form-check-input" type="radio"
               id="inativo" formControlName="status" value={{false}}
-              ngModel="{{userEdit.status}}">
+              [ngModel]="userEdit.status">
             <label class="form-check-label" for="inativo">
               Inativo
             </label>

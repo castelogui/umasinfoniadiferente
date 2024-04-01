@@ -14,20 +14,20 @@
       <label for="inputNome" class="form-label">Nome</label>
       <input type="text" class="form-control" id="inputNome"
         formControlName="name" placeholder="Titulo"
-        ngModel="{{eventEdit.name}}">
+        [value]="eventEdit.name">
     </div>
     <div class="col-md-6">
       <label for="inputDate" class="form-label">Data</label>
       <input type="datetime-local" class="form-control" id="inputDate"
         formControlName="date"
-        ngModel="{{eventEdit.date}}">
+        [value]="eventEdit.date">
     </div>
     <div class="col-md-6">
 
       <label for="inputImagem" class="form-label">Imagem Link</label>
       <textarea type="text" class="form-control" id="inputImagem"
         formControlName="img" placeholder="https://***.(png, jpg, bmp)"
-        [(ngModel)]="eventEdit.img" style="height: 140px;"></textarea>
+        [value]="eventEdit.img" style="height: 140px;"></textarea>
     </div>
     <div class="col-md-6">
       <p class="m-0">
@@ -43,7 +43,7 @@
       <label for="inputDescricao" class="form-label">Descrição Do Evento</label>
       <textarea type="text" class="form-control" id="inputDescricao"
         formControlName="descricao"
-        ngModel="{{eventEdit.descricao}}" style="height: 140px;"></textarea>
+        [value]="eventEdit.descricao" style="height: 140px;"></textarea>
     </div>
 
   </form>

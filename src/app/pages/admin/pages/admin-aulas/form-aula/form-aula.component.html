@@ -14,7 +14,7 @@
       <label for="inputImagem" class="form-label">Imagem Link</label>
       <textarea type="text" class="form-control" id="inputImagem"
         formControlName="img" placeholder="https://***.(png, jpg, bmp)"
-        [(ngModel)]="aulaEdit.img" style="height: 140px;"></textarea>
+        [value]="aulaEdit.img" style="height: 140px;"></textarea>
     </div>
     <div class="col-md-6">
       <p class="m-0">
@@ -30,19 +30,19 @@
       <label for="inputInstrumento" class="form-label">Instrumento</label>
       <input type="text" class="form-control" id="inputInstrumento"
         formControlName="instrumento" placeholder="Instrumento"
-        ngModel="{{aulaEdit.instrumento}}">
+        [value]="aulaEdit.instrumento">
     </div>
     <div class="col-md-6">
       <label for="inputDetalhes" class="form-label">Detalhes</label>
       <input type="text" class="form-control" id="inputDetalhes"
         formControlName="detalhes" placeholder="Detalhes da aula"
-        ngModel="{{aulaEdit.detalhes}}">
+        [value]="aulaEdit.detalhes">
     </div>
     <div class="col-md-6">
       <label for="inputValor" class="form-label">Valor</label>
       <input type="number" class="form-control" id="inputValor"
         formControlName="valor" placeholder="R$ 0,00"
-        ngModel="{{aulaEdit.valor}}">
+        [value]="aulaEdit.valor">
     </div>
     <div class="col-md-6" formArrayName="niveis">
       <label for="inputNiveis" class="form-label">Nível</label>
