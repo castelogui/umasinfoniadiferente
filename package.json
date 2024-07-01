@@ -20,7 +20,7 @@
     "@angular/platform-browser-dynamic": "^16.2.12",
     "@angular/router": "^16.2.12",
     "@vercel/analytics": "^1.2.2",
-    "@vercel/postgres": "^0.4.2",
+    "@vercel/postgres": "^0.9.0",
     "pnpm": "^8.15.5",
     "rxjs": "~7.8.1",
     "tslib": "^2.6.2",
